@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            //arrow 함수
+            // function(){} 
+            // =>
+
+            const temFun = function (num1, num2) {
+                console.log(num1, num2)
+            }
+
+            const temFunsum = function (num1, num2) {
+
+                return num1 + num2;
+                //teturn은 실행되는 즉시 그 함수는 무조건 실행이 종료된다.
+                //즉, 현재의 함수에서 빠져 나가라는 의미
+                //그 일이 성공했다면 성공 시 0, 실패시 1을 반환하여 종료
+            }
+            temFun("안", "녕하세요"); // 안 녕하세요 출력
+            temFunsum("안", "녕하세요"); // 안 녕하세요 출력
+
+            const temFun2 = (num1, num2) => console.log(num1, num2);
+            const temFunsum2 = (num1, num2) => console.log(num2, num2)
+
+            const temFun3 = (num1, num2) => {
+                console.log(num1, num2);
+                console.log(num2, num1);
+            }
+
+            const tempFun = (param1, param2) => ({ '성': param1, '이름': param2 });
+
+            console.log(tempFun("김", "석진")); // {성: "김", 이름: "석진"} 
+
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
