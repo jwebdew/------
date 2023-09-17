@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        div.box {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+            margin: 50px auto;
+        }
+        .box p {
+            font-size: 30px;
+            color: aliceblue;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            let bodyWrap = document.querySelector('html')
+            let box = document.querySelector('.box')
+            let boxText = box.querySelector('p')
+            bodyWrap.addEventListener('wheel', function(e){
+                e.preventDefault();
+                //deltaY => 세로로 스크롤되는 값 기본적으로 100나옴
+                //wheelDeltaY => 세로로 스크롤되는 값 기본적으로 120
+                //올리면 양수, 내리면 음수
+                let eventY = e.deltaY;
+                console.log(eventY)
+                //boxText.innerHTML = eventY;
+                if(eventY<0) {
+                    bodyWrap.style.backgroundColor = 'pink';
+                    boxText.innerHTML = '올리기'
+
+                } else {
+                    bodyWrap.style.backgroundColor = 'gray';
+                    boxText.innerHTML = '내리기'
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <p></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100%; 
+            background: #f5f5f5;
+            height: 2000px;
+        }
+
+        .box p {
+            font-size: 20px;  
+            position: fixed;
+            top: 50px;
+            left: 0;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let box = document.querySelector('.box')
+            box.addEventListener('wheel', function (e) {
+                var wheel1 = e.deltaY; //델타 Y
+                //휠 이벤트에서 휠에 대한 정도를 얻는 속성도 다릅니다. 파이어폭스에서는 detail이고 그 외에서는 wheelDelta입니다.
+
+ console.log(wheel1 + 'px')
+                if (wheel1 < 0) {
+                    //스크롤 올릴때 
+
+                    document.querySelector("p.result").innerHTML = "올림..";
+
+
+
+                } else {
+                    //스크롤  내릴때 
+                    document.querySelector("p.result").innerHTML = "내림..";
+                }
+
+            });
+
+            let p1 = document.querySelector('.pTag');
+            let p2 = document.querySelector('.result');
+            let box2 = document.querySelector('.box1');
+            // p1.addEventListener('click', function(){
+            //     p2.style.color = 'red'
+            // })
+            // p1.addEventListener('click', function(){
+            //     box2.style.backgroundColor = 'yellow'
+                
+            // })
+            // p1.onclick = function(){
+            //      p2.style.color = 'red'
+
+            // }
+            // p1.onclick = function(){
+            //     box2.style.backgroundColor = 'yellow'
+
+            // }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <p class="pTag">스크롤이벤트 </p>
+        <p class="result"></p>
+        <div class="box1">두번째</div>
+    </div>
+</body>
+
+</html>

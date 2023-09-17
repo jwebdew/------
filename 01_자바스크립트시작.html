@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // window.onload = function(){
+        //     alert()
+        // }
+
+        window.onload = function () {
+            let name = 'name';
+            let age = 14;
+
+            let time2 = document.getElementsByClassName('innner')[0];
+            time2.innerHTML = name
+
+
+
+            ///
+            let time = document.getElementsByClassName('time')[0];
+
+            // time.onclick = function(){
+            //     alert()
+            // }
+
+            //function() == () => 
+            //=> 화살표 함수
+            time.onclick = () => {
+                //alert()
+            }
+
+            let i = 0;
+            let btn = document.getElementById('next');
+            btn.onclick = () => {
+                i++;
+                btn.innerText = i;
+            }
+
+            const prices = [100, 200, 300];
+            let changed = prices.map(p => p + 200);
+console.log(changed);
+//changed = prices.map((p, index) => p + 200 + index);
+changed = prices.map(function(p, index){
+    p + 200 + index
+})
+//p : p + 200, 즉 300, 400, 500에서 index값인 1식 증가하여 300, 401, 502
+//map() 메서드는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환합니다.
+console.log(changed);
+
+    
+            
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="innner"></div>
+    <div class="time">시간</div>
+    <button id="next">0</button>
+</body>
+
+</html>

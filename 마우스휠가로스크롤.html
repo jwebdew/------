@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노트폴리오 가로스크롤</title> 
+    <style> 
+        @font-face {
+            font-family: 'Cafe24Supermagic-Bold-v1.0';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            line-height: 1;
+            font-family: 'Cafe24Supermagic-Bold-v1.0';
+            color: #333;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        header {
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.4);
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+            border-bottom: 1px solid #000;
+            z-index: 99;
+            backdrop-filter: blur(5px);
+        }
+
+        .main_visual img {
+            height: calc(100vh - 100px);
+            display: block;
+        }
+
+        .notefolio {
+            padding: 150px 0;
+            /* overflow: scroll; */
+            position: relative;
+            /* position: sticky; */
+            overflow: hidden;
+
+        }
+
+        .notefolio .title {
+            max-width: 1600px;
+            width: 100%;
+            margin: 0 auto;
+            margin-bottom: 40px;
+        }
+
+        .notefolio .title h3 {
+            font-size: 40px;
+
+        }
+
+        .notefolio .title p {
+            font-size: 20px;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        .notefolio .scroll_wrap {
+            /* max-width: 1600px; */
+            width: 100%;
+            height: 700px;
+            margin: 0 auto;
+            /* margin-left: 200px; */
+            position: relative;
+            left: 50%;
+            transform: translateX(-20%);
+            overflow: scroll;
+        }
+
+        .notefolio .scroll_wrap::-webkit-scrollbar {
+            display: none;
+
+        }
+
+        .notefolio .scroll_wrap .list {
+            display: flex;
+            position: relative;
+    transition: all 0.5s linear;/* 스크롤 부드럽게 움직임. */
+
+
+        }
+
+        .notefolio .scroll_wrap .list .item {
+            width: 500px;
+            height: 600px;
+            margin-right: 25px;
+            border-radius: 10px;
+            position: sticky;
+            top: 0;
+        }
+
+        .notefolio .scroll_wrap .list .item strong {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+
+
+
+
+        .creator {
+            background-color: #000;
+            padding: 100px 0;
+            color: #fff;
+        }
+
+        .creator .list {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .creator .list>div {
+            width: calc(100% / 4 - 20px);
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            
+            let noteFolio = document.querySelector('.notefolio')           
+            let list = noteFolio.querySelector('.list');
+            let itemLength = noteFolio.querySelectorAll('.item').length
+            let scrollWrap = noteFolio.querySelector('.scroll_wrap')
+            let widthWrap = 500 * itemLength;
+            list.style.width = widthWrap + 'px'
+            list.style.height = widthWrap + 'px'
+
+            scrollWrap.style.width = widthWrap + 'px'
+            console.log(list.clientWidth)
+
+            //scrollWrap.clientWidth(widthWrap)
+
+            //noteFolio.addEventListener('wheel', function () {
+                // => noteFolio.mousewheel = function(){}
+                //mousewheel은 비표준이며 wheel로 바뀌었음.
+
+                 
+                
+             noteFolio.addEventListener('wheel',  function () {
+                var scr = scrollWrap.scrollTop;
+                console.log(scr)
+                list.style.left = -scr + 'px';
+            })
+
+            
+
+        };
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header>헤더임.</header>
+        <main>
+            <section class="main_visual">
+                <img src="../img/fashion01.jpg" alt="">
+            </section><!-- .main_visual end -->
+            <section class="notefolio">
+                <div class="title">
+                    <h3>크리에이티브 분야 </h3>
+                    <p>국내 최고의 포트폴리오를 발견해보세요.</p>
+                </div><!-- .title end -->
+                <div class="scroll_wrap">
+                    <div class="list">
+                        <div class="item">
+                            <img src="../img/fashion01.jpg" alt="">
+                            <strong>전체</strong>
+                        </div><!-- .item1 end -->
+
+                        <div class="item">
+                            <img src="../img/fashion01.jpg" alt="">
+                            <strong>영상/모션그래픽</strong>
+                        </div><!-- .item1 end -->
+
+                        <div class="item">
+                            <img src="../img/fashion01.jpg" alt="">
+
+                            <strong>그래픽 디자인</strong>
+                        </div><!-- .item1 end -->
+
+                        <div class="item">
+                            <img src="../img/fashion01.jpg" alt="">
+
+                            <strong>브랜딩/편집</strong>
+                        </div><!-- .item1 end -->
+
+                        <div class="item">
+                            <img src="../img/fashion01.jpg" alt="">
+
+                            <strong>UI/UX</strong>
+                        </div><!-- .item1 end -->
+
+                        <div class="item">
+                            <img src="../img/fashion01.jpg" alt="">
+
+                            <strong>일러스트레이션</strong>
+                        </div><!-- .item1 end -->
+
+                        <div class="item">
+                            <img src="../img/fashion01.jpg" alt="">
+
+                            <strong>디지털아트</strong>
+                        </div><!-- .item1 end -->
+
+                        <div class="item">
+                            <img src="../img/fashion01.jpg" alt="">
+
+                            <strong>웹디자인</strong>
+                        </div><!-- .item1 end -->
+
+                    </div><!-- .list end -->
+                </div><!-- .scroll_wrap end -->
+            </section><!-- .notefolio end -->
+
+            <section class="creator">
+                <div class="inner list">
+                    <div class="item">
+                        <img src="../img/img02.jpg" alt="">
+                        <strong>douob</strong>
+
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <img src="../img/img02.jpg" alt="">
+                        <strong>douob</strong>
+
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <img src="../img/img02.jpg" alt="">
+                        <strong>douob</strong>
+
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <img src="../img/img02.jpg" alt="">
+                        <strong>douob</strong>
+
+                    </div><!-- .item end -->
+                </div><!-- .inner.list end -->
+            </section><!-- .creator end -->
+        </main>
+    </div><!-- .wrap end -->
+</body>
+
+</html>

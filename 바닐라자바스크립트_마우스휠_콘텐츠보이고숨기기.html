@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        header {
+            width: 100%;
+            height: 100px;
+            border-bottom: 1px solid #000;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            z-index: 99;
+        }
+
+        section {
+            height: calc(100vh - 100px);
+            width: 100%;
+            margin-top: 100px;
+            display: none;
+        }
+
+        .cont01 {
+            background-color: palegreen;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cont02 {
+            background-color: goldenrod;
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cont03 {
+            background-color: rgb(187, 32, 218);
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cont04 {
+            background-color: #fff;
+
+        }
+
+        .cont {
+            display: none;
+        }
+
+        .cont.on {
+            /* opacity: 1; */
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            z-index: 99;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let htmlWrap = document.querySelector('html');
+            let contWrap = document.querySelectorAll('.cont');
+
+            // let cont1 = document.querySelector('.cont01')
+            // let cont2 = document.querySelector('.cont02')
+
+            let i = 0;
+            let contWrapList = contWrap.length;
+            htmlWrap.addEventListener('wheel', function (e) {
+                //e.preventDefault();
+
+                let wheelEvent = e.deltaY;
+
+
+                console.log(wheelEvent)
+                if (wheelEvent < 0) {
+                    i--;
+                    //휠올림
+                    if (i < 0) {
+                        i = 0;
+                    }
+                    contWrap.forEach(function (item) {
+                        item.classList.remove('on');
+                    })
+                    contWrap[i].classList.add('on')
+                    // cont2.style.display = 'none';
+                    // cont1.style.display = 'flex';
+
+                } else if (wheelEvent > 0) {
+                    //휠내림
+                    i++;
+                    if (i >= contWrapList) {
+                        i = 0;
+                    }
+                    // cont2.style.display = 'flex';
+                    // cont1.style.display = 'none';
+                    contWrap.forEach(function (item) {
+                        item.classList.remove('on');
+                    })
+                    contWrap[i].classList.add('on')
+                }
+
+                clearTimeout(htmlWrap); //
+                htmlWrap = setTimeout(() => {
+                    console.log('stop wheeling!');
+
+                    //htmlWrap = undefined;
+                    alert('즐거운시간되세요')
+                }, 4000);
+            })
+
+
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header>
+            <div class="inner">
+                <h1>logo</h1>
+                <div class="menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div><!-- .menu end -->
+                <nav>
+
+                </nav>
+            </div><!-- .inner end -->
+
+
+        </header>
+        <section class="cont01 cont on">
+            <h3>첫번째 콘텐츠</h3>
+        </section><!-- .cont01  end -->
+
+        <section class="cont02 cont">
+            <h3>두번째 콘텐츠</h3>
+        </section><!-- .cont01  end -->
+
+        <section class="cont03 cont">
+            <h3>세번째 콘텐츠</h3>
+        </section><!-- .cont01  end -->
+        <section class="cont04 cont">
+            <h3>네번째 콘텐츠</h3>
+        </section><!-- .cont01  end -->
+    </div><!-- .wrap end -->
+</body>
+
+</html>
